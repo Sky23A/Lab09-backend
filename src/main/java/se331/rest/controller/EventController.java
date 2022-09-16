@@ -39,7 +39,7 @@ public class EventController {
         return new
                 ResponseEntity<>(pageOutput.getContent(),responseHeader,HttpStatus.OK);
     }
-    @GetMapping("event/{id}")
+    @GetMapping("events/{id}")
     public ResponseEntity<?> getEvent(@PathVariable("id") Long id) {
         Event output = eventService.getEvent(id);
         if (output != null) {
@@ -47,6 +47,11 @@ public class EventController {
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
         }
+    }
+    @PostMapping("/events")
+    public ResponseEntity<?> addEvent(@RequestBody Event event){
+        Event output = eventService.save(event);
+        return ResponseEntity.ok(event);
     }
 }
 
