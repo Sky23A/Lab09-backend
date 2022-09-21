@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 import se331.rest.dao.EventDao;
 import se331.rest.entity.Event;
 
-import java.util.List;
-
 @Service
 public class EventServiceImpl implements EventService {
     @Autowired
@@ -27,9 +25,9 @@ public class EventServiceImpl implements EventService {
     public Event getEvent(Long id) {
         return eventDao.getEvent(id);
     }
+
     @Override
-    public Event save(Event event){
+    public Event save(Event event) {
         return eventDao.save(event);
     }
 }
-
